@@ -90,6 +90,7 @@ else
 fi
 
 tmp_file=${output_file/.mp4/_temp.mp4}
+test -f $tmp_file && rm -f $tmp_file
 echo "Processing $mp4_file (-ss=${key_frame_secs} -to=$end_time)"
 ffmpeg -loglevel warning -y -i ${input_file} -ss ${key_frame_secs} -to $end_time \
 	-c copy $tmp_file
